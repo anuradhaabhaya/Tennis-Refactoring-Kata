@@ -29,7 +29,7 @@ public class TennisTest {
                 { 2, 2, "Thirty-All"},
                 { 3, 3, "Deuce"},
                 { 4, 4, "Deuce"},
-                
+
                 { 1, 0, "Fifteen-Love"},
                 { 0, 1, "Love-Fifteen"},
                 { 2, 0, "Thirty-Love"},
@@ -67,10 +67,10 @@ public class TennisTest {
 
     public void checkAllScores(TennisGame game) {
         int highestScore = Math.max(this.player1Score, this.player2Score);
-        for (int i = 0; i < highestScore; i++) {
-            if (i < this.player1Score)
+        for (int point = 0; point < highestScore; point++) {
+            if (point < this.player1Score)
                 game.wonPoint("player1");
-            if (i < this.player2Score)
+            if (point < this.player2Score)
                 game.wonPoint("player2");
         }
         assertEquals(this.expectedScore, game.getScore());
