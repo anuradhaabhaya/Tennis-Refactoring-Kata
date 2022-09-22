@@ -28,45 +28,34 @@ public class TennisGame2 implements TennisGame
             return "Advantage player2";
         }
 
-        if (P1point == P2point && P1point < 3)
-        {
-            if (P1point==0)
-                return "Love-All";
-            if (P1point==1)
-                return "Fifteen-All";
-            if (P1point==2)
-                return "Thirty-All";
-        }
-        if (P1point==P2point && P1point>=3)
-            return "Deuce";
-        
-        if (P1point > 0 && P2point==0)
-        {
-            return getPlayerResult(P1point) + "-" + getPlayerResult(0);
-        }
-        if (P2point > 0 && P1point==0)
-        {
-            return getPlayerResult(0) + "-" + getPlayerResult(P2point);
+        if (P1point == P2point) {
+            return getEqualityResult();
         }
         
-        if ((P1point>P2point && P1point < 4) || (P2point>P1point && P2point < 4))
-        {
+        if ((P1point>P2point && P1point < 4) || (P2point>P1point && P2point < 4)) {
             return getPlayerResult(P1point) + "-" + getPlayerResult(P2point);
         }
         return score;
     }
 
+    private String getEqualityResult() {
+        if (P1point==0)
+            return "Love-All";
+        if (P1point==1)
+            return "Fifteen-All";
+        if (P1point==2)
+            return "Thirty-All";
+        return "Deuce";
+    }
+
     private String getPlayerResult(int playerPoint) {
-        String p2res = "";
         if (playerPoint == 0)
-            p2res ="Love";
+            return "Love";
         if (playerPoint == 1)
-            p2res ="Fifteen";
+            return "Fifteen";
         if (playerPoint == 2)
-            p2res ="Thirty";
-        if (playerPoint == 3)
-            p2res ="Forty";
-        return p2res;
+            return "Thirty";
+        return "Forty";
     }
 
     public void P1Score()
